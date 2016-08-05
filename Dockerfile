@@ -61,9 +61,9 @@ ADD yarn-site.xml $HADOOP_PREFIX/etc/hadoop/yarn-site.xml
 
 # Fix guava issue by updating it to v15
 
-RUN mkdir -p /usr/java/default/bin && ln -s $(which java) /usr/java/default/bin/java
-RUN rm $HADOOP_PREFIX/share/hadoop/hdfs/lib/guava-11.0.2.jar && curl -o $HADOOP_PREFIX/share/hadoop/hdfs/lib/guava-11.0.2.jar https://repo1.maven.org/maven2/com/google/guava/guava/15.0/guava-15.0.jar
-RUN for file in $(find . -iname guava-11.0.2.jar); do cp $HADOOP_PREFIX/share/hadoop/hdfs/lib/guava-11.0.2.jar $file; done
+#RUN mkdir -p /usr/java/default/bin && ln -s $(which java) /usr/java/default/bin/java
+#RUN rm $HADOOP_PREFIX/share/hadoop/hdfs/lib/guava-11.0.2.jar && curl -o $HADOOP_PREFIX/share/hadoop/hdfs/lib/guava-11.0.2.jar https://repo1.maven.org/maven2/com/google/guava/guava/15.0/guava-15.0.jar
+#RUN for file in $(find . -iname guava-11.0.2.jar); do cp $HADOOP_PREFIX/share/hadoop/hdfs/lib/guava-11.0.2.jar $file; done
 
 RUN $HADOOP_PREFIX/bin/hdfs namenode -format
 
