@@ -19,12 +19,16 @@ RUN cp /root/.ssh/id_rsa.pub /root/.ssh/authorized_keys
 
 
 # java
-RUN apt-get install -y openjdk-7-jdk
+RUN apt-get update && apt-get install -y \
+    openjdk-7-jre \
+    --no-install-recommends && \
+    rm -rf /var/lib/apt/lists/*
 #RUN curl -LO 'http://download.oracle.com/otn-pub/java/jdk/7u51-b13/jdk-7u51-linux-x64.rpm' -H 'Cookie: oraclelicense=accept-securebackup-cookie'
 #RUN rpm -i jdk-7u51-linux-x64.rpm
 #RUN rm jdk-7u51-linux-x64.rpm
+# Define commonly used JAVA_HOME variable
 
-ENV JAVA_HOME /usr/java/default
+ENV JAVA_HOME /usr/lib/jvm/java-7-openjdk-armhf
 ENV PATH $PATH:$JAVA_HOME/bin
 
 # hadoop
